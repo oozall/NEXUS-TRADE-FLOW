@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 25% 7%;
+    --foreground: 210 20% 92%;
+    --card: 222 22% 10%;
+    --card-foreground: 210 20% 92%;
+    --popover: 222 22% 10%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 222 25% 7%;
+    --secondary: 222 20% 15%;
+    --secondary-foreground: 210 20% 80%;
+    --muted: 222 20% 13%;
+    --muted-foreground: 210 15% 50%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 222 25% 7%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 222 20% 16%;
+    --input: 222 20% 14%;
+    --ring: 158 64% 52%;
+    --radius: 0.6rem;
+    --success: 158 64% 52%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 51%;
+    --profit: 158 64% 52%;
+    --loss: 0 72% 51%;
+    --chart-1: 158 64% 52%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 0 72% 51%;
+    --sidebar-background: 222 25% 6%;
+    --sidebar-foreground: 210 20% 80%;
+    --sidebar-primary: 158 64% 52%;
+    --sidebar-primary-foreground: 222 25% 7%;
+    --sidebar-accent: 222 20% 13%;
+    --sidebar-accent-foreground: 210 20% 80%;
+    --sidebar-border: 222 20% 14%;
+    --sidebar-ring: 158 64% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 20px hsla(158, 64%, 52%, 0.15);
+}
+.glow-red {
+  box-shadow: 0 0 20px hsla(0, 72%, 51%, 0.15);
+}
+.glow-blue {
+  box-shadow: 0 0 20px hsla(217, 91%, 60%, 0.15);
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-live {
+  animation: pulse-green 1.5s ease-in-out infinite;
+}
+
+/* Ticker animation */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-wrap {
+  overflow: hidden;
+}
+.ticker-content {
+  display: flex;
+  animation: ticker-scroll 360s linear infinite;
+  width: max-content;
+}
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+/* Number color helpers */
+.text-profit { color: hsl(var(--profit)); }
+.text-loss { color: hsl(var(--loss)); }
+.text-warning { color: hsl(var(--warning)); }
+
+/* Card hover */
+.card-hover {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  border-color: hsl(var(--primary) / 0.3);
+  box-shadow: 0 0 16px hsl(var(--primary) / 0.08);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
